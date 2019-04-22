@@ -1,58 +1,28 @@
-package sih.app;
+package sih.app.hotel;
 
-public class Room   {
+public class Room {
 
-    private Integer number;
-    private Double price;
-    private Integer capacity;
-    private Integer floor;
+    private int number;
+    private double price;
+    private int capacity;
+    private int floor;
     private String description;
+    private Availability availability;
 
-    public Room(Integer number, Double price, Integer capacity, Integer floor, String description) {
+    public Room(int number, double price, int capacity, int floor, String description, Availability availability) {
         this.number = number;
         this.price = price;
         this.capacity = capacity;
         this.floor = floor;
         this.description = description;
+        this.availability = Availability.AVAILABLE;
     }
 
-    public Integer getNumber() {
-        return number;
-    }
-
-    public void setNumber(Integer number) {
+    public Room(int number, double price, int capacity, int floor, String description) {
         this.number = number;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
         this.price = price;
-    }
-
-    public Integer getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(Integer capacity) {
         this.capacity = capacity;
-    }
-
-    public Integer getFloor() {
-        return floor;
-    }
-
-    public void setFloor(Integer floor) {
         this.floor = floor;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
         this.description = description;
     }
 }

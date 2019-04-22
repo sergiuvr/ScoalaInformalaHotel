@@ -1,5 +1,8 @@
-package sih.app;
+package sih.app.hotel;
 
+import sih.app.people.Person;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Hotel {
@@ -10,7 +13,12 @@ public class Hotel {
     private List<Person> employees;
     private Person owner;
 
-    public Hotel() {
+    public Hotel(String name, String address, Person owner) {
+        this.name = name;
+        this.address = address;
+        this.owner = owner;
+        this.rooms = new ArrayList<Room>();
+        this.employees = new ArrayList<Person>();
     }
 
     public Hotel(String name, String address, List<Room> rooms, List<Person> employees, Person owner) {
@@ -21,43 +29,20 @@ public class Hotel {
         this.owner = owner;
     }
 
-    public String getName() {
-        return name;
+    public void addRoom(Room room) {
+        rooms.add(room);
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void removeRoom(Room room) {
+        rooms.remove(room);
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public List<Room> getRooms() {
+    public List<Room> getAllRooms() {
         return rooms;
     }
 
-    public void setRooms(List<Room> rooms) {
-        this.rooms = rooms;
-    }
-
-    public List<Person> getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(List<Person> employees) {
-        this.employees = employees;
-    }
-
-    public Person getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Person owner) {
-        this.owner = owner;
+    @Override
+    public String toString() {
+        return "Hotel: "+ name + ", " + address;
     }
 }

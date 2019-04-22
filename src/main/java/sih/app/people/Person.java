@@ -1,4 +1,4 @@
-package sih.app;
+package sih.app.people;
 
 public class Person {
 
@@ -14,35 +14,8 @@ public class Person {
         this.age = age;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
+    @Override
+    public String toString() {
+        return firstName + " " + lastName + ", age:" + age;
     }
 }

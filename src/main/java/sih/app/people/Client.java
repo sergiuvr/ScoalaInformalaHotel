@@ -1,4 +1,4 @@
-package sih.app;
+package sih.app.people;
 
 public class Client extends Person {
 

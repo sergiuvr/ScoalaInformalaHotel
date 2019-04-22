@@ -1,5 +1,8 @@
-package sih.app;
+package sih.app.people;
 
-public class Owner {
+public class Owner extends Employee {
 
+    public Owner(String id, String firstName, String lastName, int age, long salary) {
+        super(id, firstName, lastName, age, salary);
+    }
 }
