@@ -5,9 +5,9 @@ public class Person {
     private String id;
     private String firstName;
     private String lastName;
-    private Integer age;
+    private int age;
 
-    public Person(String id, String firstName, String lastName, Integer age) {
+    public Person(String id, String firstName, String lastName, int age) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -38,7 +38,7 @@ public class Person {
         this.lastName = lastName;
     }
 
-    public Integer getAge() {
+    public int getAge() {
         return age;
     }
 

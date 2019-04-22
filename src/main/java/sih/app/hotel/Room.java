@@ -1,6 +1,6 @@
 package sih.app;
 
-public class Room {
+public class Room   {
 
     private Integer number;
     private Double price;
