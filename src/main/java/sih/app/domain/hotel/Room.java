@@ -1,4 +1,4 @@
-package sih.app.hotel;
+package sih.app.domain.hotel;
 
 public class Room {
 

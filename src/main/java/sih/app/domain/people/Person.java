@@ -1,4 +1,4 @@
-package sih.app.people;
+package sih.app.domain.people;
 
 public class Person {
 
@@ -17,5 +17,21 @@ public class Person {
     @Override
     public String toString() {
         return firstName + " " + lastName + ", age:" + age;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public int getAge() {
+        return age;
     }
 }

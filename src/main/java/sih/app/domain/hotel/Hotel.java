@@ -1,6 +1,6 @@
-package sih.app.hotel;
+package sih.app.domain.hotel;
 
-import sih.app.people.Person;
+import sih.app.domain.people.Person;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,14 +11,16 @@ public class Hotel {
     private String address;
     private List<Room> rooms;
     private List<Person> employees;
+    private String description;
     private Person owner;
 
-    public Hotel(String name, String address, Person owner) {
+    public Hotel(String name, String address, Person owner, String description) {
         this.name = name;
         this.address = address;
         this.owner = owner;
         this.rooms = new ArrayList<Room>();
         this.employees = new ArrayList<Person>();
+        this.description = description;
     }
 
     public Hotel(String name, String address, List<Room> rooms, List<Person> employees, Person owner) {
@@ -27,6 +29,14 @@ public class Hotel {
         this.rooms = rooms;
         this.employees = employees;
         this.owner = owner;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void addEmployee(Person employee) {
+        employees.add(employee);
     }
 
     public void addRoom(Room room) {
@@ -41,8 +51,12 @@ public class Hotel {
         return rooms;
     }
 
+    public List<Person> getAllEmployees(){
+        return employees;
+    }
+
     @Override
     public String toString() {
-        return "Hotel: "+ name + ", " + address;
+        return "Hotel " + name + " from " + address + " with description " + description + " has " + rooms.size() + " rooms and " + employees.size() + " empolyees";
     }
 }

@@ -1,4 +1,4 @@
-package sih.app.people;
+package sih.app.domain.people;
 
 public class Owner extends Employee {
 

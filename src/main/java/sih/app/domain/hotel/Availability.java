@@ -1,8 +1,8 @@
-package sih.app.hotel;
+package sih.app.domain.hotel;
 
 public enum Availability {
     AVAILABLE("free", true),
-    NOT_AVAILABLE("booked", false);
+    NOT_AVAILABLE("booked",false);
 
     private final String message;
     private final boolean custom;

@@ -1,4 +1,4 @@
-package sih.app.people;
+package sih.app.domain.people;
 
 public class Employee extends Person {
 
@@ -12,5 +12,9 @@ public class Employee extends Person {
     @Override
     public String toString() {
         return super.toString() + ", salary:" + salary;
+    }
+
+    public long getSalary() {
+        return salary;
     }
 }
