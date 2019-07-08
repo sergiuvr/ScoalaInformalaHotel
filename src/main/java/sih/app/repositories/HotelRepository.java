@@ -4,6 +4,7 @@ import sih.app.domain.hotel.Hotel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class HotelRepository implements HotelRepositoryInterface {
 
@@ -30,12 +31,11 @@ public class HotelRepository implements HotelRepositoryInterface {
 
     @Override
     public Hotel findByName(String name) {
-        for (Hotel hotel : hotels) {
-            if (hotel.getName().equals(name)) {
-                return hotel;
-            }
+        Optional<Hotel> hotel = hotels.stream().filter(el -> el.getName().equals(name)).findFirst();
+        if(hotel.isPresent()){
+            return hotel.get();
+        }else {
+            return null;
         }
-
-        return null;
     }
 }
