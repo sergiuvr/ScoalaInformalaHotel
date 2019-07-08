@@ -1,14 +1,26 @@
 package sih.app.domain.people;
 
-public class Person {
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import sih.app.domain.HasId;
 
-    private String id;
+@Getter
+@Setter
+@EqualsAndHashCode(callSuper = true)
+public class Person extends HasId {
+    @EqualsAndHashCode.Include
+    private String cnp;
+    @EqualsAndHashCode.Exclude
     private String firstName;
+    @EqualsAndHashCode.Exclude
     private String lastName;
+    @EqualsAndHashCode.Exclude
     private int age;
 
-    public Person(String id, String firstName, String lastName, int age) {
-        this.id = id;
+    public Person(long id, String cnp, String firstName, String lastName, int age) {
+        super(id);
+        this.cnp = cnp;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -19,19 +31,4 @@ public class Person {
         return firstName + " " + lastName + ", age:" + age;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public int getAge() {
-        return age;
-    }
 }

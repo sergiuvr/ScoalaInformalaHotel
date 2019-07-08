@@ -9,12 +9,13 @@ public class ClientTest {
     @Test
     public void createClient() {
 
-        String id = "1";
+        long id = 1;
+        String cnp = "3213121";
         String firstName = "Robert";
         String lastName = "Pop";
         int age = 30;
         String phoneNumber = "423423";
-        Client client = new Client(id, firstName, lastName, age, phoneNumber);
+        Client client = new Client(id, cnp, firstName, lastName, age, phoneNumber);
         assertEquals(client.getId(), id);
         assertEquals(client.getFirstName(), firstName);
         assertEquals(client.getLastName(), lastName);

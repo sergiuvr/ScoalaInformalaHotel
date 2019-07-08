@@ -1,13 +1,11 @@
 package sih.app.services;
 
 import sih.app.domain.hotel.Hotel;
-import sih.app.exceptions.InvalidData;
-import sih.app.repositories.HotelRepository;
 import sih.app.repositories.HotelRepositoryInterface;
 
-import java.util.List;
+import java.util.Collection;
 
-public class HotelService {
+public class HotelService implements HotelServiceInterface {
 
     HotelRepositoryInterface hotelRepository;
 
@@ -15,6 +13,7 @@ public class HotelService {
         this.hotelRepository = hotelRepository;
     }
 
+    @Override
     public String validateAndRemoveHotel(Hotel hotel) {
         if(hotel == null){
             return "HOTEL IS NULL";
@@ -28,14 +27,17 @@ public class HotelService {
         return "EVERYTHING WENT WELL";
     }
 
-    public List<Hotel> getHotels() {
-        return hotelRepository.getHotels();
+    @Override
+    public Collection<Hotel> getHotels() {
+        return hotelRepository.getAll();
     }
 
+    @Override
     public Hotel findByName(String name) {
         return hotelRepository.findByName(name);
     }
 
+    @Override
     public String validateAndAddHotel(Hotel hotel) {
         if (hotel == null) {
             return "HOTEL IS NULL";
@@ -45,7 +47,8 @@ public class HotelService {
             return "NAME TOO LONG";
         }
 
-        hotelRepository.addHotel(hotel);
+        hotelRepository.add(hotel);
         return "EVERYTHING WENT WELL";
     }
+
 }

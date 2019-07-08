@@ -7,7 +7,7 @@ import java.util.List;
 public class HotelRepositoryMock extends HotelRepository {
 
     @Override
-    public void addHotel(Hotel hotel) {
+    public void add(Hotel hotel) {
 
     }
 
@@ -17,7 +17,7 @@ public class HotelRepositoryMock extends HotelRepository {
     }
 
     @Override
-    public List<Hotel> getHotels() {
+    public List<Hotel> getAll() {
         return null;
     }
 

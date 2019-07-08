@@ -1,17 +1,19 @@
 package sih.app.repositories;
 
 import sih.app.domain.hotel.Hotel;
-import sih.app.exceptions.InvalidData;
 
-import java.util.List;
+public interface HotelRepositoryInterface  extends RepositoryInterface<Hotel> {
 
-public interface HotelRepositoryInterface {
-
-    void addHotel(Hotel hotel);
-
+    /**
+     * removes the hotel with a given name
+     * @param name
+     */
     void removeHotel(String name);
 
-    List<Hotel> getHotels();
-
+    /**
+     * find the hotel with a given name
+     * @param name
+     * @return hotel with the given name
+     */
     Hotel findByName(String name);
 }

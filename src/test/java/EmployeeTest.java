@@ -9,13 +9,14 @@ public class EmployeeTest {
     @Test
     public void createClient() {
 
-        String id = "1";
+        long id = 1;
+        String cnp = "1321312";
         String firstName = "Robert";
         String lastName = "Pop";
         int age = 30;
         String phoneNumber = "423423";
         long salary = 100L;
-        Employee employee = new Employee(id, firstName, lastName, age, salary);
+        Employee employee = new Employee(id, cnp, firstName, lastName, age, salary);
         assertEquals(employee.getId(), id);
         assertEquals(employee.getFirstName(), firstName);
         assertEquals(employee.getLastName(), lastName);
