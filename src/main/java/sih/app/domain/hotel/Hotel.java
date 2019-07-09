@@ -1,13 +1,12 @@
 package sih.app.domain.hotel;
 
 import lombok.Getter;
+import sih.app.domain.CheckInData;
 import sih.app.domain.HasId;
 import sih.app.domain.Order;
 import sih.app.domain.people.Person;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Getter
@@ -19,6 +18,7 @@ public class Hotel extends HasId {
     private List<Person> employees;
     private String description;
     private Person owner;
+    private Queue<CheckInData> checkIns= new LinkedList();;
 
     public Hotel(long id, String name, String address, Person owner, String description) {
         super(id);
@@ -65,6 +65,18 @@ public class Hotel extends HasId {
 
     public List<Person> getAllEmployees() {
         return employees;
+    }
+
+    public void addCheckInData(CheckInData checkInData){
+        checkIns.add(checkInData);
+    }
+
+    public CheckInData pollCheckInData(){
+        return checkIns.poll();
+    }
+
+    public boolean hasCheckInData(){
+        return !checkIns.isEmpty();
     }
 
     @Override

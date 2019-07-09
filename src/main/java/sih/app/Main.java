@@ -1,5 +1,6 @@
 package sih.app;
 
+import sih.app.domain.CheckInData;
 import sih.app.domain.Order;
 import sih.app.domain.Reservation;
 import sih.app.domain.hotel.*;
@@ -18,17 +19,45 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Main {
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws ParseException, InterruptedException {
         partFour();
         partFiveAndSix();
         addAndSortRooms();
         useMap();
         partSeven();
+        partEight(1000);
+    }
+
+    private static void partEight(int numberOfClients) throws ParseException, InterruptedException {
+        Person owner = new Owner(1, "1321312312", "Ion", "Pop", 30, 23000L);
+        Hotel hotel = new Hotel(1, "Continental", "adresa", owner, "descriere hotel");
+
+        DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        Date d1 = format.parse("07-07-2019");
+        Date d2 = format.parse("10-07-2019");
+        Random r = new Random();
+        int low = 1;
+        int high = 10;
+
+        HotelStatisticsThread hotelStatisticsThread = new HotelStatisticsThread(hotel);
+        Thread t1 = new Thread(hotelStatisticsThread);
+        t1.start();
+
+        while (numberOfClients > 0) {
+            //randomly generate client threads
+            Date randomDate = new Date(ThreadLocalRandom.current().nextLong(d1.getTime(), d2.getTime()));
+            int randomPeopleNumber = r.nextInt(high - low) + low;
+            ClientThread clientThread = new ClientThread(hotel, new CheckInData(randomDate, randomPeopleNumber));
+            Thread t2 = new Thread(clientThread);
+            t2.start();
+            numberOfClients--;
+        }
     }
 
     /**
@@ -38,7 +67,6 @@ public class Main {
      */
     private static void partSeven() throws ParseException {
         Person owner = new Owner(1, "1321312312", "Ion", "Pop", 30, 23000L);
-        System.out.println(owner);
 
         Hotel hotel = new Hotel(1, "Continental", "adresa", owner, "descriere hotel");
 
@@ -62,7 +90,7 @@ public class Main {
 
 
         // create reservation with builder
-        Client client = new Client(1,"33243213","Cristi","Muresan",23,"0732321312");
+        Client client = new Client(1, "33243213", "Cristi", "Muresan", 23, "0732321312");
         DateFormat format = new SimpleDateFormat("dd-mm-yyyy", Locale.ENGLISH);
         Date startDate = format.parse("01-03-2019");
         Date endDate = format.parse("12-10-2019");
